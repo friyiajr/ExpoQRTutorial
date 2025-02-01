@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, SafeAreaView, Pressable } from "react-native";
 import { Link, Stack } from "expo-router";
-
 import { useCameraPermissions } from "expo-camera";
 
 export default function Home() {
@@ -10,22 +9,15 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Stack.Screen options={{ title: "Overview", headerShown: false }} />
+      <Stack.Screen options={{ title: "QR Scanner", headerShown: false }} />
       <Text style={styles.title}>QR Code Scanner</Text>
-      <View style={{ gap: 20 }}>
-        <Pressable onPress={requestPermission}>
-          <Text style={styles.buttonStyle}>Request Permissions</Text>
+      <View style={styles.buttonContainer}>
+        <Pressable onPress={requestPermission} style={styles.button}>
+          <Text style={styles.buttonText}>Request Permissions</Text>
         </Pressable>
         <Link href={"/scanner"} asChild>
-          <Pressable disabled={!isPermissionGranted}>
-            <Text
-              style={[
-                styles.buttonStyle,
-                { opacity: !isPermissionGranted ? 0.5 : 1 },
-              ]}
-            >
-              Scan Code
-            </Text>
+          <Pressable disabled={!isPermissionGranted} style={[styles.button, { opacity: !isPermissionGranted ? 0.5 : 1 }]}>
+            <Text style={styles.buttonText}>Scan Code</Text>
           </Pressable>
         </Link>
       </View>
@@ -37,17 +29,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "black",
-    justifyContent: "space-around",
-    paddingVertical: 80,
+    backgroundColor: "#1c1c1e",
+    justifyContent: "center",
+    paddingHorizontal: 20,
   },
   title: {
     color: "white",
-    fontSize: 40,
+    fontSize: 36,
+    fontWeight: "bold",
+    marginBottom: 40,
   },
-  buttonStyle: {
-    color: "#0E7AFE",
-    fontSize: 20,
-    textAlign: "center",
+  buttonContainer: {
+    width: '100%',
+    alignItems: 'center',
+    gap: 20,
+  },
+  button: {
+    backgroundColor: "#0E7AFE",
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    minWidth: 200,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "600",
   },
 });

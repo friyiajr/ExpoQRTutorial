@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.wa2goose.ExpoQR2"
+      "bundleIdentifier": "com.qrcodeReader.ExpoQR2"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,7 +25,7 @@
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.wa2goose.ExpoQR2"
+      "package": "com.qrcodeReader.ExpoQR2"
     },
     "web": {
       "bundler": "metro",
@@ -45,6 +45,8 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "newArchEnabled": true
+
   }
 }
